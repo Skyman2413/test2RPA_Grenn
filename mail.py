@@ -11,13 +11,11 @@ with open("cfg.json", "r") as f:
 
 
 def __form_msg(recipient, text):
-
     msg = MIMEMultipart()
     msg['From'] = 'stepanPyParser'
     msg['To'] = recipient
     msg['Date'] = formatdate(localtime=True)
     msg.attach(MIMEText(text))
-
     fp = open("exchange.xlsx", 'rb')
     part = MIMEBase('application', 'vnd.ms-excel')
     part.set_payload(fp.read())
