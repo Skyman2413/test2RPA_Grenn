@@ -38,5 +38,5 @@ def __configureSmtp():
 def send_excel(recipient, text):
     smtpObj = __configureSmtp()
     msg = __form_msg(recipient, text)
-    smtpObj.sendmail("stepan26062001@gmail.com", msg['To'], msg.as_bytes())
+    smtpObj.sendmail(msg['From'], msg['To'], msg.as_bytes())
     smtpObj.quit()
