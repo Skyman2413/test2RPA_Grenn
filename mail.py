@@ -23,6 +23,7 @@ def __form_msg(recipient, text):
     part.set_payload(fp.read())
     fp.close()
     encoders.encode_base64(part)
+    part.add_header('Content-Disposition', 'attachment; filename="exchange.xlsx"')
     msg.attach(part)
     return msg
 
@@ -37,5 +38,5 @@ def __configureSmtp():
 def send_excel(recipient, text):
     smtpObj = __configureSmtp()
     msg = __form_msg(recipient, text)
-    smtpObj.sendmail("stepan26062001@gmail.com", msg['To'], msg.as_string())
+    smtpObj.sendmail("stepan26062001@gmail.com", msg['To'], msg.as_bytes())
     smtpObj.quit()
