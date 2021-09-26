@@ -47,7 +47,6 @@ for i in range(len(currencies)):
 
 excel.fill_G_column()
 excel.optimize_columns_width()
-
 text = form_text()
 send_excel(recipient, text)
 os.remove("exchange.xlsx")
